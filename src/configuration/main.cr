@@ -5,6 +5,8 @@ require "./datastore"
 require "./manifests"
 require "./embedded_registry_mirror"
 require "./local_path_storage_class"
+require "./timeouts.cr"
+
 
 class Configuration::Main
   include YAML::Serializable
@@ -33,6 +35,7 @@ class Configuration::Main
   getter manifests : Configuration::Manifests = Configuration::Manifests.new
   getter embedded_registry_mirror : Configuration::EmbeddedRegistryMirror = Configuration::EmbeddedRegistryMirror.new
   getter local_path_storage_class : Configuration::LocalPathStorageClass = Configuration::LocalPathStorageClass.new
+  getter timeouts : Configuration::Timeouts = Configuration::Timeouts.new
   getter include_instance_type_in_instance_name : Bool = false
   getter protect_against_deletion : Bool = true
   getter create_load_balancer_for_the_kubernetes_api : Bool = false

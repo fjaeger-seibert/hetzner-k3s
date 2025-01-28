@@ -185,7 +185,7 @@ class Cluster::Create
 
   private def create_instance_with_retry(instance_factory)
     Retriable.retry(max_attempts: 3, on: Tasker::Timeout, backoff: false) do
-      Tasker.timeout(60.seconds) { instance_factory.run }
+      Tasker.timeout(settings.timeouts.instance_creation_timeout.seconds) { instance_factory.run }
     end
   end
 
